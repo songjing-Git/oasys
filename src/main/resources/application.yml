@@ -1,0 +1,16 @@
+server:
+    port: 8084 #应用服务端口
+    tomcat:
+        uri-encoding: utf-8
+spring:
+    application:
+        name: oasys #应用服务名称
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/OA?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+        username: root
+        password: root
+mybatis-plus:
+    typeAliasesPackage: com.xs.bo.model.entity
+    configuration:
+        log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl

@@ -5,24 +5,17 @@ import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.builders.ResponseMessageBuilder;
 import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.ResponseMessage;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * @author songjing3@asiainfo
+ * @author songjing
  * @version 1.0
  * @date 2020/12/22 15:54
  */
-// 启动时加载类
 @Configuration
-// 启用Swagger API文档
 @EnableSwagger2
 public class SwaggerConfig {
 
@@ -31,11 +24,13 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                // 自行修改为自己的包路径
                 .apis(RequestHandlerSelectors.basePackage("com.songjing.oasys.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
+
+
+
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("springboot利用swagger2构建api文档")
@@ -43,7 +38,7 @@ public class SwaggerConfig {
                 .version("1.0")
                 .build();
     }
-    private List<ResponseMessage> customerResponseMessage() {
+    /*private List<ResponseMessage> customerResponseMessage() {
         List<ResponseMessage> list = new ArrayList<>();
         list.add(new ResponseMessageBuilder().code(200).message("请求成功").build());
         list.add(new ResponseMessageBuilder().code(201).message("资源创建成功").build());
@@ -55,5 +50,5 @@ public class SwaggerConfig {
         list.add(new ResponseMessageBuilder().code(500).message("服务器遇到了一个未曾预料的状况,导致了它无法完成对请求的处理").build());
         list.add(new ResponseMessageBuilder().code(503).message("服务器当前无法处理请求,这个状况是临时的，并且将在一段时间以后恢复").build());
         return list;
-    }
+    }*/
 }
