@@ -1,9 +1,9 @@
-package com.songjing.oasys.controller;
+package com.songjing.oasys.staff.controller;
 
 
 import com.baomidou.mybatisplus.extension.api.ApiController;
-import com.songjing.oasys.entity.User;
-import com.songjing.oasys.service.UserService;
+import com.songjing.oasys.staff.entity.User;
+import com.songjing.oasys.staff.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

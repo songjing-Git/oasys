@@ -1,7 +1,7 @@
-package com.songjing.oasys.mapper;
+package com.songjing.oasys.staff.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.songjing.oasys.entity.User;
+import com.songjing.oasys.staff.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

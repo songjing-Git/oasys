@@ -1,4 +1,4 @@
-package com.songjing.oasys.entity;
+package com.songjing.oasys.staff.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
