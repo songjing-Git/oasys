@@ -1,8 +1,8 @@
-package com.songjing.oasys.staff.service;
+package com.songjing.oasys.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.songjing.oasys.staff.entity.User;
+import com.songjing.oasys.entity.User;
 
 /**
  * (User)表服务接口
