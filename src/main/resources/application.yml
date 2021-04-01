@@ -5,12 +5,28 @@ server:
 spring:
     application:
         name: oasys #应用服务名称
+        #数据库服务
     datasource:
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/OA?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+        driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+        url: jdbc:p6spy:mysql://localhost:3306/OA?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
         username: root
         password: root
+    #邮件发送服务
+    mail:
+        host: smtp.qq.com
+        username: 1249932920@qq.com
+        password: omelbdslkhpvbacb
+        port: 25
+        protocol: smtp
+        default-encoding: UTF-8
+#    security:
+#      user:
+#          name: user
+#          password: root
+
 mybatis-plus:
-    typeAliasesPackage: com.xs.bo.model.entity
+    typeAliasesPackage: com.songjing.oasys.entity
     configuration:
         log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+

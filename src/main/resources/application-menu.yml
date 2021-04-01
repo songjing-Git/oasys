@@ -1,60 +1,60 @@
+{
+    name: "人事管理",
+    code: "PersonMgr",
+    item:[
     {
-        name: "人事管理",
-        code: "PersonMgr",
-        item:[
-        {
-            name: "内推政策",
-            url: "PersonMgr/InterRmd",
-        },
-        {
-            name: "内推职位",
-            url: "PersonMgr/InterPush"
-        },
-        {
-            name: "内部调动",
-            url: "PersonMgr/InterMob"
-        },
-        {
-            name: "合同续签",
-            url: "PersonMgr/ContractRen"
-        },
-        {
-            name: "离职处理",
-            url: "PersonMgr/LeaveDeal"
-        },
-        {
-            name: "员工福利",
-            url: "PersonMgr/StaffWelfare"
-        },
-        {
-            name: "政策制度",
-            url: "/PoliciesSys"
-        },
-        ],
-    }
-  {
-      name: "费用报销",
-      code: "ExpenseRbm",
-      item:[
-      {
-          name: "餐费报销",
-          url: "ExpenseRbm/MealRbm"
-      },
-      {
-          name: "车费报销",
-          url: "ExpenseRbm/TransRbm"
-      },
-      {
-          name: "办公费用报销",
-          url: "ExpenseRbm/OfficeRbm"
-      },
-      {
-          name: "其他报销",
-          url: "ExpenseRbm/OthersRbm"
-      },
-      ],
+        name: "内推政策",
+        url: "PersonMgr/InterRmd",
+    },
+    {
+        name: "内推职位",
+        url: "PersonMgr/InterPush"
+    },
+    {
+        name: "内部调动",
+        url: "PersonMgr/InterMob"
+    },
+    {
+        name: "合同续签",
+        url: "PersonMgr/ContractRen"
+    },
+    {
+        name: "离职处理",
+        url: "PersonMgr/LeaveDeal"
+    },
+    {
+        name: "员工福利",
+        url: "PersonMgr/StaffWelfare"
+    },
+    {
+        name: "政策制度",
+        url: "/PoliciesSys"
+    },
+    ],
+}
+{
+    name: "费用报销",
+    code: "ExpenseRbm",
+    item:[
+    {
+        name: "餐费报销",
+        url: "ExpenseRbm/MealRbm"
+    },
+    {
+        name: "车费报销",
+        url: "ExpenseRbm/TransRbm"
+    },
+    {
+        name: "办公费用报销",
+        url: "ExpenseRbm/OfficeRbm"
+    },
+    {
+        name: "其他报销",
+        url: "ExpenseRbm/OthersRbm"
+    },
+    ],
 
-  }
+}
   {
       name: "信息管理",
       item:[
@@ -95,23 +95,23 @@
       ],
 
   }
-    {
-        name: "辅助管理",
-        item:[
-        {
-            name: "",
-            url: ""
-        },
-        ],
+  {
+      name: "辅助管理",
+      item:[
+      {
+          name: "",
+          url: ""
+      },
+      ],
 
-    }
-    {
-        name: "项目管理",
-        item:[
-        {
-            name: "",
-            url: ""
-        },
-        ],
+  }
+  {
+      name: "项目管理",
+      item:[
+      {
+          name: "",
+          url: ""
+      },
+      ],
 
-    }
+  }

@@ -8,161 +8,181 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.Date;
+
 
 /**
- * (User)表实体类
+ * (Staff)表实体类
  *
  * @author songjing
- * @since 2021-01-05 15:23:13
+ * @since 2021-03-21 15:37:25
  */
 @Data
 @Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("user")
-public class User implements Serializable {
+@TableName("staff")
+public class Staff implements Serializable {
 
     /**
      * 员工编号
      */
-    @TableField("STAFF_ID")
-    private String staffId;
+    @TableField("staff_id")
+    private Integer staffId;
 
     /**
      * 名称
      */
-    @TableField("STAFF_NAME")
+    @TableField("staff_name")
     private String staffName;
 
     /**
-     * 登录账号
+     * 用户头像
      */
-    @TableField("USER_NAME")
+    @TableField("face")
+    private byte[] face;
+
+    /**
+     * OA登录账号
+     */
+    @TableField("user_name")
     private String userName;
 
     /**
-     * 登录密码
+     * OA账号密码
      */
-    @TableField("PASSWORD")
+    @TableField("password")
     private String password;
 
     /**
      * 性别
      */
-    @TableField("GENDER")
+    @TableField("gender")
     private String gender;
 
     /**
      * 生日
      */
-    @TableField("BIRTHDAY")
-    private String birthday;
+    @TableField("birthday")
+    private Date birthday;
+
+    /**
+     * 年龄
+     */
+    @TableField("age")
+    private Integer age;
 
     /**
      * 身份证
      */
-    @TableField("ID_CARD")
-    private String idCard;
+    @TableField("id_card")
+    private Long idCard;
 
     /**
-     * 婚姻状况  0-未婚，1-已婚，2-离异，3-丧偶
+     * 婚姻状况
      */
-    @TableField("WEDLOCK")
+    @TableField("wedlock")
     private String wedlock;
 
     /**
      * 民族
      */
-    @TableField("NATION")
+    @TableField("nation")
     private String nation;
 
     /**
      * 籍贯
      */
-    @TableField("NATIVE_PLACE")
-    private String nativePlace;
+    @TableField("native_place")
+    private Integer nativePlace;
 
     /**
      * 政治面貌
      */
-    @TableField("POLITIC_ID")
-    private String politicId;
+    @TableField("politic")
+    private String politic;
 
     /**
      * 邮箱
      */
-    @TableField("EMAIL")
+    @TableField("email")
     private String email;
 
     /**
      * 电话号码
      */
-    @TableField("PHONE")
-    private String phone;
+    @TableField("phone")
+    private Long phone;
 
     /**
      * 联系地址
      */
-    @TableField("ADDRESS")
+    @TableField("address")
     private String address;
 
     /**
      * 所属部门
      */
-    @TableField("DEPT_ID")
-    private String deptId;
+    @TableField("depart_id")
+    private Integer departId;
 
     /**
      * 职位等级
      */
-    @TableField("JOB_LEVEL_ID")
-    private String jobLevelId;
-
-    /**
-     * 最高学历
-     */
-    @TableField("TIP_TOP_DEGREE")
-    private String tipTopDegree;
-
-    /**
-     * 所属专业
-     */
-    @TableField("SPECIALTY")
-    private String specialty;
-
-    /**
-     * 毕业院校
-     */
-    @TableField("SCHOOL")
-    private String school;
-
-    /**
-     * 入职日期
-     */
-    @TableField("BEGIN_DATE")
-    private String beginDate;
-
-    /**
-     * 在职状态 0-离职， 1在职
-     */
-    @TableField("WORK_STATE")
-    private String workState;
-
-    /**
-     * 合同起始日期
-     */
-    @TableField("begin_contract")
-    private String beginContract;
-
-    /**
-     * 合同终止日期
-     */
-    @TableField("end_contract")
-    private String endContract;
+    @TableField("job_level_id")
+    private Integer jobLevelId;
 
     /**
      * 工龄
      */
     @TableField("work_age")
-    private String workAge;
+    private Integer workAge;
+
+    /**
+     * 薪资
+     */
+    @TableField("salary_id")
+    private Integer salaryId;
+
+    /**
+     * 最高学历
+     */
+    @TableField("tip_top_degree")
+    private String tipTopDegree;
+
+    /**
+     * 所属专业
+     */
+    @TableField("specialty")
+    private String specialty;
+
+    /**
+     * 毕业院校
+     */
+    @TableField("school")
+    private String school;
+
+    /**
+     * 入职日期
+     */
+    @TableField("begin_date")
+    private Date beginDate;
+
+    /**
+     * 在职状态 0-离职， 1在职
+     */
+    @TableField("work_state")
+    private Integer workState;
+
+    /**
+     * 合同起始日期
+     */
+    @TableField("begin_contract")
+    private Date beginContract;
+
+    /**
+     * 合同终止日期
+     */
+    @TableField("end_contract")
+    private Date endContract;
 }
