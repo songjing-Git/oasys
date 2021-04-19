@@ -37,4 +37,10 @@ public interface DepartService extends IService<Depart> {
      */
     int insertDepart(Depart depart);
 
+    /**
+     * 通过id删除部门信息
+     * @param id
+     * @return
+     */
+    int removeById(int id);
 }

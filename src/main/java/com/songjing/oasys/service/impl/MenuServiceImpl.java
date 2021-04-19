@@ -7,6 +7,9 @@ import com.songjing.oasys.service.MenuService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 /**
  * (Menu)表服务实现类
  *
@@ -17,4 +20,11 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements MenuService {
 
+    @Resource
+    MenuMapper menuMapper;
+
+    @Override
+    public List<Menu> getAllMenu(){
+        return menuMapper.getAllMenu();
+    }
 }

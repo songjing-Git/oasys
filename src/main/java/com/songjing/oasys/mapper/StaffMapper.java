@@ -1,12 +1,10 @@
 package com.songjing.oasys.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.songjing.oasys.entity.Staff;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-
-import java.util.Map;
 
 /**
  * (Staff)表服务接口
@@ -18,7 +16,19 @@ import java.util.Map;
 @Repository
 public interface StaffMapper extends BaseMapper<Staff> {
 
-    IPage<Map<String,Object>> queryStaffInfo(Map<String, Object> param,IPage page,StringBuilder whereSql);
+    /**
+     * SpringSecurity
+     * @param username
+     * @return
+     */
+    @Select("select * from staff where user_name=#{username}")
+    Staff loadUserByUsername(String username);
 
-    Map<String ,String> selectStaffInfoByName();
+    /**
+     * 根据id查询名称
+     * @param staffId
+     * @return
+     */
+    @Select("select staff_name from staff where staff_id=#{staffId}")
+    String selectStaffNameById(int staffId);
 }

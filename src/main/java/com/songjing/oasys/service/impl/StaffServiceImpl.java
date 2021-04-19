@@ -30,7 +30,7 @@ import java.util.Map;
  */
 @Service
 @Slf4j
-public class StaffServiceImpl extends ServiceImpl<StaffMapper, Staff> implements StaffService {
+public class StaffServiceImpl extends ServiceImpl<StaffMapper, Staff> implements StaffService  {
 
     @Resource
     StaffMapper staffMapper;
@@ -109,6 +109,15 @@ public class StaffServiceImpl extends ServiceImpl<StaffMapper, Staff> implements
                 staff.putAll(salaryMap);
             }
 
+            if (Maps.isNotEmpty(staff,"work_state")) {
+                if ("0".equals(staff.get("work_state").toString())){
+                    staff.put("workStateName","离职");
+                } else {
+                    staff.put("workStateName","在职");
+                }
+            }
+
+
         }
         return staffInfoPage;
     }
@@ -120,8 +129,6 @@ public class StaffServiceImpl extends ServiceImpl<StaffMapper, Staff> implements
         Staff staff = staffMapper.selectOne(queryWrapper);
         Map<String, Object> staffMap = JSON.parseObject(JSON.toJSONString(staff),
                 new TypeReference<Map<String, Object>>() {});
-        log.info("=======================staffMap:"+staffMap);
-        log.info("===================Maps.isNotEmpty(staffMap,\"depart_id\"):"+Maps.isNotEmpty(staffMap,"depart_id"));
         if (Maps.isNotEmpty(staffMap,"departId")) {
             Object departCode = staffMap.get("departId");
             Integer deptId = Integer.valueOf(departCode.toString());
@@ -162,4 +169,37 @@ public class StaffServiceImpl extends ServiceImpl<StaffMapper, Staff> implements
         log.info("===============insert:"+insert);
         return insert;
     }
+
+    @Override
+    public int updateStaff(Map<String, Object> param) {
+        if (param.get("staffId")==null){
+            return 0;
+        }
+        Staff staff = new Staff();
+        staff.setStaffId(Integer.valueOf(param.get("staffId").toString()));
+        Integer departId =null;
+        Integer jobLevelId=null;
+        log.info("================param:"+param);
+        if (Maps.isNotEmpty(param,"staffId")){
+            staffMapper.updateById(null);
+        }
+        if (Maps.isNotEmpty(param,"changeType")){
+            if (!("Dept").equals(param.get("changeType"))){
+                if (Maps.isNotEmpty(param,"jobLevelName")) {
+                    jobLevelId = jobLevelMapper.selectJobLevelIdByName(param.get("jobLevelName").toString());
+                }
+            }
+            if (!("Post").equals(param.get("changeType"))) {
+                if (Maps.isNotEmpty(param,"departName")){
+                    departId = departMapper.selectDepartIdByDepartName(param.get("departName").toString());
+                }
+            }
+        }
+        QueryWrapper<Staff> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq(departId!=null,"depart_id",departId)
+                .eq(jobLevelId!=null,"job_level_id",jobLevelId);
+        return  staffMapper.update(staff, queryWrapper);
+    }
+
+
 }

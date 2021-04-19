@@ -24,4 +24,11 @@ public interface DepartMapper extends BaseMapper<Depart> {
     @Select("select depart_id from depart_name=#{departName}")
     int selectDepartIdByDepartName(String departName);
 
+    /**
+     * 通过部门id删除部门
+     * @param id
+     * @return
+     */
+    @Select("delete from depart where depart_id=#{id} ")
+    int deleteById(int id);
 }

@@ -15,7 +15,7 @@ import java.util.Date;
  * (Project)表实体类
  *
  * @author songjing
- * @since 2021-03-16 15:10:52
+ * @since 2021-04-19 14:47:54
  */
 @Data
 @Accessors(chain = true)
@@ -41,6 +41,12 @@ public class Project implements Serializable {
      */
     @TableField("project_type")
     private String projectType;
+
+    /**
+     * 甲方
+     */
+    @TableField("first_party")
+    private String firstParty;
 
     /**
      * 项目状态
@@ -97,10 +103,28 @@ public class Project implements Serializable {
     private Long realMoney;
 
     /**
-     * 项目经理
+     * 甲方联系人
      */
-    @TableField("project_mgr")
-    private String projectMgr;
+    @TableField("contact_person")
+    private String contactPerson;
+
+    /**
+     * 甲方联系人电话
+     */
+    @TableField("contact_phone")
+    private Long contactPhone;
+
+    /**
+     * 项目申请人
+     */
+    @TableField("project_app_person")
+    private String projectAppPerson;
+
+    /**
+     * 项目申请人编号
+     */
+    @TableField("project_app_person_code")
+    private Integer projectAppPersonCode;
 
     /**
      * 项目负责人/项目领导者

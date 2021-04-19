@@ -58,4 +58,5 @@ public class Menu implements Serializable {
 
     @TableField("parent_menu_id")
     private Integer parentMenuId;
+
 }

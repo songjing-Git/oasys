@@ -70,4 +70,9 @@ public class DepartServiceImpl extends ServiceImpl<DepartMapper, Depart> impleme
         log.info("===============depart:"+depart);
         return departMapper.insert(depart);
     }
+
+    @Override
+    public int removeById(int id) {
+        return departMapper.deleteById(id);
+    }
 }

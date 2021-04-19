@@ -46,4 +46,10 @@ public class StaffController extends ApiController {
         return staffService.insertStaff(staffInfo);
     }
 
+    @ApiOperation("员工信息更改")
+    @PutMapping("/updateStaff")
+    public int updateStaff(@RequestBody Map<String,Object> updateInfo){
+        return staffService.updateStaff(updateInfo);
+    }
+
 }

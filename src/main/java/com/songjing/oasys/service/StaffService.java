@@ -13,7 +13,7 @@ import java.util.Map;
  * @author songjing
  * @since 2021-03-16 15:15:48
  */
-public interface StaffService extends IService<Staff> {
+public interface StaffService extends IService<Staff>   {
 
     /**
      * 根据条件查询员工信息
@@ -35,4 +35,11 @@ public interface StaffService extends IService<Staff> {
      * @return
      */
     int insertStaff(Map<String ,Object> param);
+
+    /**
+     * 更新员工信息
+     * @param param
+     * @return
+     */
+    int updateStaff(Map<String,Object> param);
 }

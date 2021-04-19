@@ -3,6 +3,12 @@ server:
     tomcat:
         uri-encoding: utf-8
 spring:
+    servlet:
+        multipart:
+            #单个文件上传大小
+            max-request-size: 50MB
+                #一次请求的多个文件大小
+            max-file-size: 50MB
     application:
         name: oasys #应用服务名称
         #数据库服务
@@ -21,12 +27,27 @@ spring:
         default-encoding: UTF-8
 #    security:
 #      user:
-#          name: user
-#          password: root
-
+#          name: admin
+#          password: 123456
+    #返回前端的时间格式
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: GMT+8
+    #mvc在启动时加载，如果不配，则在访问时加载
+    mvc:
+      servlet:
+          load-on-startup: 1
+    #redis配置
+    redis:
+        host: localhost
+        port: 6379
 mybatis-plus:
+    #mybatisplus包别名
     typeAliasesPackage: com.songjing.oasys.entity
     configuration:
         log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+        #MP下划线转驼峰
+        #map-underscore-to-camel-case: true
+
 
 

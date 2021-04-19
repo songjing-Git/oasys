@@ -48,7 +48,7 @@ public class DepartController extends ApiController {
 
     @ApiOperation("通过部门id删除部门")
     @DeleteMapping("/removeDepart/{id}")
-    public boolean removeDepart(@PathVariable int id) {
+    public int removeDepart(@PathVariable int id) {
         return departService.removeById(id);
     }
     

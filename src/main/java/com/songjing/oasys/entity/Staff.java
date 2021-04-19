@@ -15,14 +15,14 @@ import java.util.Date;
  * (Staff)表实体类
  *
  * @author songjing
- * @since 2021-03-21 15:37:25
+ * @since 2021-04-12 14:47:29
  */
 @Data
 @Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @TableName("staff")
-public class Staff implements Serializable {
+public class Staff implements Serializable  {
 
     /**
      * 员工编号
@@ -185,4 +185,6 @@ public class Staff implements Serializable {
      */
     @TableField("end_contract")
     private Date endContract;
+
+
 }
