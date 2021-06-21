@@ -9,12 +9,13 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * (Menu)表实体类
  *
  * @author songjing
- * @since 2021-03-16 15:16:26
+ * @since 2021-05-03 17:49:37
  */
 @Data
 @Accessors(chain = true)
@@ -25,6 +26,9 @@ public class Menu implements Serializable {
 
     @TableField("menu_id")
     private Integer menuId;
+
+    @TableField("parent_menu_id")
+    private Integer parentMenuId;
 
     /**
      * 路径匹配规则
@@ -53,10 +57,8 @@ public class Menu implements Serializable {
     @TableField("hideInMenu")
     private Boolean hideinmenu;
 
-    @TableField("component")
-    private String component;
+    @TableField("file")
+    private String file;
 
-    @TableField("parent_menu_id")
-    private Integer parentMenuId;
-
+    private List<Menu> children;
 }

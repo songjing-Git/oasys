@@ -14,7 +14,7 @@ import java.io.Serializable;
  * (Salary)表实体类
  *
  * @author songjing
- * @since 2021-03-16 15:17:27
+ * @since 2021-05-20 13:48:58
  */
 @Data
 @Accessors(chain = true)

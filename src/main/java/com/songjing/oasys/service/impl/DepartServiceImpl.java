@@ -7,11 +7,14 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.songjing.oasys.entity.Depart;
+import com.songjing.oasys.entity.Staff;
 import com.songjing.oasys.mapper.DepartMapper;
+import com.songjing.oasys.mapper.StaffMapper;
 import com.songjing.oasys.service.DepartService;
 import com.songjing.oasys.utils.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -31,6 +34,9 @@ public class DepartServiceImpl extends ServiceImpl<DepartMapper, Depart> impleme
     @Resource
     DepartMapper departMapper;
 
+    @Resource
+    StaffMapper staffMapper;
+
     @Override
     public IPage selectDepartInfo(Map<String,Object> param) {
         log.info("==============param:"+param);
@@ -42,9 +48,9 @@ public class DepartServiceImpl extends ServiceImpl<DepartMapper, Depart> impleme
             page.setSize(Long.parseLong(param.get("pageSize").toString()));
         }
         QueryWrapper<Depart> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq(Maps.isNotEmpty(param,"depart_id"),"depart_id",param.get("depart_id"))
-                .eq(Maps.isNotEmpty(param,"depart_name"),"depart_name",param.get("depart_name"))
-                .eq(Maps.isNotEmpty(param,"depart_mgr"),"depart_mgr","depart_mgr");
+        queryWrapper.eq(Maps.isNotEmpty(param,"departId"),"depart_id",param.get("departId"))
+                .eq(Maps.isNotEmpty(param,"departName"),"depart_name",param.get("departName"))
+                .eq(Maps.isNotEmpty(param,"departMgr"),"depart_mgr","departMgr");
 
         return departMapper.selectPage(page, queryWrapper);
     }
@@ -71,8 +77,28 @@ public class DepartServiceImpl extends ServiceImpl<DepartMapper, Depart> impleme
         return departMapper.insert(depart);
     }
 
+    @Transactional(rollbackFor=Exception.class)
     @Override
     public int removeById(int id) {
-        return departMapper.deleteById(id);
+        QueryWrapper<Staff> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("depart_id",id);
+        List<Map<String, Object>> maps = staffMapper.selectMaps(queryWrapper);
+
+        if (!maps.isEmpty()){
+            List<Integer> intList=new ArrayList<>();
+            for (Map<String, Object> map : maps) {
+                int departId =Integer.parseInt(map.get("staff_id").toString()) ;
+                intList.add(departId);
+            }
+            Staff staff = new Staff();
+            staff.setDepartId(null);
+            QueryWrapper<Staff> queryWrapper1 = new QueryWrapper<>();
+            queryWrapper1.in("staff_id",intList);
+            int update = staffMapper.update(staff, queryWrapper1);
+            log.info("======update:"+update);
+        }
+        int i = departMapper.deleteById(id);
+        log.info("==========> i:"+i);
+        return i;
     }
 }

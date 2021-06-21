@@ -23,7 +23,7 @@ public class SwaggerConfig {
 
     @Bean
     public Docket api() {
-        log.info("SwaggerConfig");
+        log.info("Swagger配置...");
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
@@ -34,6 +34,7 @@ public class SwaggerConfig {
 
 
     private ApiInfo apiInfo() {
+        log.info("整合SwaggerApi...");
         return new ApiInfoBuilder()
                 .title("springboot利用swagger2构建api文档")
                 .description("简单优雅的restful风格")

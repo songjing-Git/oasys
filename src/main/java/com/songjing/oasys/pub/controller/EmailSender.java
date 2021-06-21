@@ -54,15 +54,13 @@ public class EmailSender {
 
     @ApiOperation("内推职位发送邮件")
     @PostMapping("/pushSend")
-    public void send( @RequestParam(required = false) MultipartFile file){
+    public void send(@RequestParam MultipartFile file){
         //发送对象的邮箱
         String title = "职位查看通知";
         String content = "<div>工号:92590</div>" +
                 "<div>姓名:宋京</div>" +
                 "<div>内推了一名优秀员工,员工信息见附件</div>" +
-                "<br/>" +
-                "<button>审批通过</button>" +
-                "<button>不通过</button>" ;
+                "<br/>";
         MailInfo info = new MailInfo();
         info.setToAddress(mail);
         info.setSubject(title);
@@ -80,13 +78,13 @@ public class EmailSender {
     public void sendRmb(@RequestBody List<Map<String,Object>> param){
         log.info("===============param:"+param);
         //发送对象的邮箱
-        String title = "报销审批通知";
+        String title = "报销通知";
         String content = "<div>工号:92590</div>" +
                 "<div>姓名:宋京</div>" +
                 "<div>"+param+"</div>" +
-                "<br/>" +
+                "<br/>"/* +
                 "<button>审批通过</button>   " +
-                "  <button>不通过</button>" ;
+                "  <button>不通过</button>" */;
         MailInfo info = new MailInfo();
         info.setToAddress(mail);
         info.setSubject(title);
@@ -121,5 +119,52 @@ public class EmailSender {
             e.printStackTrace();
         }
     }
+
+
+    @ApiOperation("UI图上传")
+    @PostMapping("/send/UI")
+    public void sendUI( @RequestParam(required = false) MultipartFile file){
+        //发送对象的邮箱
+        String title = "UI上传通知";
+        String content = "<div>工号:92590</div>" +
+                "<div>姓名:宋京</div>" +
+                "<div>见附件</div>" +
+                "<br/>";
+        MailInfo info = new MailInfo();
+        info.setToAddress(mail);
+        info.setSubject(title);
+        info.setContent(content);
+        try {
+            emailService.sendHtmlMail(info,file);
+        } catch (Exception e) {
+            System.out.print("'"+title+"'的邮件发送失败！");
+            e.printStackTrace();
+        }
+    }
+
+
+
+    @ApiOperation("项目需求邮件")
+    @PostMapping(value = "/send/Pd",produces = "application/x-www-form-urlencoded;charset=UTF-8")
+    public void sendPd(@RequestBody(required = false) String param) {
+        String title = "项目需求新增通知";
+        String content = "<div>工号:92590</div>" +
+                "<div>姓名:宋京</div>" +
+                "<div>"+param+"</div>" +
+                "<br/>"  ;
+        MailInfo info = new MailInfo();
+        info.setToAddress(mail);
+        info.setSubject(title);
+        info.setContent(content);
+        try {
+            emailService.sendHtmlMail(info);
+        } catch (Exception e) {
+            System.out.print("'"+title+"'的邮件发送失败！");
+            e.printStackTrace();
+        }
+    }
+
+    
+
 
 }

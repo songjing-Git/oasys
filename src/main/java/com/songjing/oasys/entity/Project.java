@@ -2,6 +2,7 @@ package com.songjing.oasys.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -58,18 +59,21 @@ public class Project implements Serializable {
      * 项目开始时间
      */
     @TableField("project_start_date")
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
     private Date projectStartDate;
 
     /**
      * 预计完工日期
      */
     @TableField("project_end_date")
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
     private Date projectEndDate;
 
     /**
      * 预计交付日期
      */
     @TableField("pay_date")
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
     private Date payDate;
 
     /**
@@ -136,6 +140,7 @@ public class Project implements Serializable {
      * 项目申请日期
      */
     @TableField("apply_date")
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
     private Date applyDate;
 
     /**

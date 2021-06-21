@@ -21,7 +21,6 @@ public class GlobalCorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.addAllowedOrigin("http://localhost:8081");
         //config.addAllowedOrigin("http://localhost:8081");
-        log.info("添加域成功");
         //2) 是否发送Cookie信息
         config.setAllowCredentials(true);
         log.info("添加跨域允许的请求方式");

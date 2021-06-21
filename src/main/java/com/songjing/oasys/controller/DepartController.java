@@ -1,12 +1,16 @@
 package com.songjing.oasys.controller;
 
 
+import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.songjing.oasys.entity.Depart;
 import com.songjing.oasys.service.DepartService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -22,6 +26,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/depart")
 @Api("部门信息接口")
+@Slf4j
 public class DepartController extends ApiController {
 
 
@@ -42,12 +47,14 @@ public class DepartController extends ApiController {
 
     @ApiOperation("新增部门")
     @PostMapping("/insertDepart")
+    @PreAuthorize("hasAnyRole('root','admin')")
     public int insertDepart(@RequestBody Depart depart) {
         return departService.insertDepart(depart);
     }
 
     @ApiOperation("通过部门id删除部门")
     @DeleteMapping("/removeDepart/{id}")
+    @PreAuthorize("hasAnyRole('root','admin')")
     public int removeDepart(@PathVariable int id) {
         return departService.removeById(id);
     }
@@ -57,5 +64,24 @@ public class DepartController extends ApiController {
     public List<Map<String ,Object>> selectDepartName() {
         return departService.selectDepartName();
     }
+
+
+    @ApiOperation("修改部门信息")
+    @PutMapping("/updateDepart")
+    public boolean updateDepartInfo(@RequestBody Map<String,Object> param){
+        log.info("=>param:"+param);
+        if (param.isEmpty()){
+            throw new RuntimeException("修改部门信息时参数不能为空");
+        }
+        int departId = Integer.parseInt(param.get("departId").toString());
+        Depart depart = JSON.parseObject(JSON.toJSONString(param), Depart.class);
+        log.info("=========>Depart:"+depart);
+        QueryWrapper<Depart> departQueryWrapper = new QueryWrapper<>();
+        departQueryWrapper.eq("depart_id",departId);
+        boolean update = departService.update(depart, departQueryWrapper);
+        return update;
+    }
+
+
 
 }

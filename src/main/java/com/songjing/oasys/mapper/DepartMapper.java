@@ -2,6 +2,7 @@ package com.songjing.oasys.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.songjing.oasys.entity.Depart;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -29,6 +30,6 @@ public interface DepartMapper extends BaseMapper<Depart> {
      * @param id
      * @return
      */
-    @Select("delete from depart where depart_id=#{id} ")
+    @Delete("delete from depart where depart_id=#{id} ")
     int deleteById(int id);
 }

@@ -42,4 +42,21 @@ public interface StaffService extends IService<Staff>   {
      * @return
      */
     int updateStaff(Map<String,Object> param);
+
+
+    /**
+     * 查询没有部门的员工
+     * @param current
+     * @param pageSize
+     * @return
+     */
+    IPage selectNoDeptStaff(int current,int pageSize);
+
+
+    /**
+     * 更新员工基本信息
+     * @param staff
+     * @return
+     */
+    int updateStaffInfo(Staff staff);
 }
