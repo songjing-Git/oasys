@@ -30,6 +30,8 @@ spring:
 #          name: admin
 #          password: 123456
     #返回前端的时间格式
+    session:
+        timeout: 1440m
     jackson:
         date-format: yyyy-MM-dd HH:mm:ss
         time-zone: GMT+8
@@ -39,8 +41,17 @@ spring:
           load-on-startup: 1
     #redis配置
     redis:
-        host: localhost
+        database: 0
+        host: 127.0.0.1
         port: 6379
+        timeout: 6000ms
+        jedis:
+          pool:
+              max-active: 8
+              max-wait: -1
+              max-idle: 8
+              min-idle: 0
+
 mybatis-plus:
     #mybatisplus包别名
     typeAliasesPackage: com.songjing.oasys.entity
