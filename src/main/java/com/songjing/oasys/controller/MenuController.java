@@ -27,7 +27,7 @@ public class MenuController extends ApiController {
 
     @PostMapping("getAll")
     @ApiOperation("获取所有菜单")
-    public List<Menu> getAllMenu(){
+    public List<Menu> getAllMenu() {
         return menuService.getAllMenu();
     }
 }

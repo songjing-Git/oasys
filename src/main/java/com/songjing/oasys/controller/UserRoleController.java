@@ -27,26 +27,26 @@ public class UserRoleController extends ApiController {
 
     @ApiOperation("根据员工编号查询员工权限信息")
     @GetMapping("/selectStaffRole/{staffId}")
-    public List<Role> selectStaffRole(@PathVariable String staffId){
+    public List<Role> selectStaffRole(@PathVariable String staffId) {
         return userRoleService.selectStaffRole(staffId);
     }
 
     @ApiOperation("根据员工编号查询员工权限信息")
     @GetMapping("/selectStaffNoRole/{staffId}")
-    public List<Role> selectStaffNoRole(@PathVariable String staffId){
+    public List<Role> selectStaffNoRole(@PathVariable String staffId) {
         return userRoleService.selectStaffNoRole(staffId);
     }
 
     @ApiOperation("根据员工编号查询员工权限信息")
     @GetMapping("/selectAllRole")
-    public List<Role> selectAllRole(){
+    public List<Role> selectAllRole() {
         return userRoleService.selectAllRole();
     }
 
 
     @ApiOperation("更新员工权限")
     @PutMapping("/updateRole")
-    public int updateStaffRole(@RequestBody Map<String,Object> targetKeys){
+    public int updateStaffRole(@RequestBody Map<String, Object> targetKeys) {
         return userRoleService.updateStaffRole(targetKeys);
     }
 }

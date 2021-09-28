@@ -38,14 +38,14 @@ public class PerformanceServiceImpl extends ServiceImpl<PerformanceMapper, Perfo
     @Override
     public List<Map<String, Object>> selectPerformanceList() {
         List<Map<String, Object>> performanceList = performanceMapper.selectPerformanceList();
-        if (performanceList.isEmpty()){
+        if (performanceList.isEmpty()) {
             return null;
         }
-        for (Map<String,Object> performanceMap:performanceList) {
-            if (Maps.isNotEmpty(performanceMap,"staff_id")){
+        for (Map<String, Object> performanceMap : performanceList) {
+            if (Maps.isNotEmpty(performanceMap, "staff_id")) {
                 String staffName =
                         staffMapper.selectStaffNameById(Integer.parseInt(performanceMap.get("staff_id").toString()));
-                performanceMap.put("staffName",staffName);
+                performanceMap.put("staffName", staffName);
             }
         }
 

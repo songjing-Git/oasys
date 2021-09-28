@@ -26,10 +26,10 @@ public class TextServiceImpl extends ServiceImpl<TextMapper, Text> implements Te
 
     @Override
     public Text policyPush() {
-        String textType="内推政策";
+        String textType = "内推政策";
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String format = simpleDateFormat.format(date);
-        return textMapper.policyPush(textType,format);
+        return textMapper.policyPush(textType, format);
     }
 }

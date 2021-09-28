@@ -17,8 +17,9 @@ public interface SalaryService extends IService<Salary> {
 
     /**
      * 薪资查询
+     *
      * @param param
      * @return
      */
-    IPage<Salary> querySalary(Map<String,Object> param);
+    IPage<Salary> querySalary(Map<String, Object> param);
 }

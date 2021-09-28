@@ -30,7 +30,7 @@ public class WorkController extends ApiController {
 
     @ApiOperation("查询内推职位信息")
     @GetMapping("/selectWorkInfo")
-    public IPage selectWorkInfo(@RequestParam(required = false) Map<String,Object> param) {
+    public IPage selectWorkInfo(@RequestParam(required = false) Map<String, Object> param) {
         return workService.selectWorkInfo(param);
     }
 }

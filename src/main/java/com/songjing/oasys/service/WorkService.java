@@ -17,9 +17,10 @@ public interface WorkService extends IService<Work> {
 
     /**
      * 分页查询内推职位
+     *
      * @param param
      * @return
      */
-    IPage selectWorkInfo( Map<String,Object> param);
+    IPage selectWorkInfo(Map<String, Object> param);
 
 }

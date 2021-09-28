@@ -30,7 +30,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @TableName("staff")
-public class Staff implements UserDetails,  Serializable {
+public class Staff implements UserDetails, Serializable {
 
     /**
      * 员工编号
@@ -72,7 +72,7 @@ public class Staff implements UserDetails,  Serializable {
      * 生日
      */
     @TableField("birthday")
-    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
+    @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date birthday;
 
     /**
@@ -132,7 +132,7 @@ public class Staff implements UserDetails,  Serializable {
     /**
      * 所属部门
      */
-    @TableField(value ="depart_id",updateStrategy = FieldStrategy.IGNORED)
+    @TableField(value = "depart_id", updateStrategy = FieldStrategy.IGNORED)
     private Integer departId;
 
     /**

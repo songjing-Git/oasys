@@ -35,13 +35,13 @@ public class DepartController extends ApiController {
 
     @ApiOperation("通过部门编号查询部门信息")
     @GetMapping("/selectById/{id}")
-    public Depart selectById(@PathVariable int id){
-       return   departService.getById(id);
+    public Depart selectById(@PathVariable int id) {
+        return departService.getById(id);
     }
 
     @ApiOperation("查询部门所有信息")
     @GetMapping("/selectDepartInfo")
-    public IPage<Depart> selectDepartInfo(@RequestParam(required = false) Map<String,Object> param) {
+    public IPage<Depart> selectDepartInfo(@RequestParam(required = false) Map<String, Object> param) {
         return departService.selectDepartInfo(param);
     }
 
@@ -58,30 +58,29 @@ public class DepartController extends ApiController {
     public int removeDepart(@PathVariable int id) {
         return departService.removeById(id);
     }
-    
+
     @ApiOperation("获取所有部门名称")
     @GetMapping("/selectDepartName")
-    public List<Map<String ,Object>> selectDepartName() {
+    public List<Map<String, Object>> selectDepartName() {
         return departService.selectDepartName();
     }
 
 
     @ApiOperation("修改部门信息")
     @PutMapping("/updateDepart")
-    public boolean updateDepartInfo(@RequestBody Map<String,Object> param){
-        log.info("=>param:"+param);
-        if (param.isEmpty()){
+    public boolean updateDepartInfo(@RequestBody Map<String, Object> param) {
+        log.info("=>param:" + param);
+        if (param.isEmpty()) {
             throw new RuntimeException("修改部门信息时参数不能为空");
         }
         int departId = Integer.parseInt(param.get("departId").toString());
         Depart depart = JSON.parseObject(JSON.toJSONString(param), Depart.class);
-        log.info("=========>Depart:"+depart);
+        log.info("=========>Depart:" + depart);
         QueryWrapper<Depart> departQueryWrapper = new QueryWrapper<>();
-        departQueryWrapper.eq("depart_id",departId);
+        departQueryWrapper.eq("depart_id", departId);
         boolean update = departService.update(depart, departQueryWrapper);
         return update;
     }
-
 
 
 }

@@ -20,6 +20,7 @@ public interface MenuMapper extends BaseMapper<Menu> {
 
     /**
      * 查询所有菜单
+     *
      * @return
      */
     @Select("select * from menu")

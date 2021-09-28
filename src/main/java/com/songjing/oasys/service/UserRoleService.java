@@ -19,6 +19,7 @@ public interface UserRoleService extends IService<UserRole> {
 
     /**
      * 根据员工编号查询员工角色信息
+     *
      * @param staffId
      * @return
      */
@@ -26,6 +27,7 @@ public interface UserRoleService extends IService<UserRole> {
 
     /**
      * 根据员工编号查询员工没有角色信息
+     *
      * @param staffId
      * @return
      */
@@ -33,6 +35,7 @@ public interface UserRoleService extends IService<UserRole> {
 
     /**
      * 获取员工所有权限
+     *
      * @return
      */
     List<Role> selectAllRole();
@@ -40,8 +43,9 @@ public interface UserRoleService extends IService<UserRole> {
 
     /**
      * 更新员工权限信息
+     *
      * @param targetKeys
      * @return
      */
-    int updateStaffRole(Map<String,Object> targetKeys);
+    int updateStaffRole(Map<String, Object> targetKeys);
 }

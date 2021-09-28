@@ -7,14 +7,14 @@ spring:
         multipart:
             #单个文件上传大小
             max-request-size: 50MB
-                #一次请求的多个文件大小
+            #一次请求的多个文件大小
             max-file-size: 50MB
     application:
         name: oasys #应用服务名称
         #数据库服务
     datasource:
         driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-        url: jdbc:p6spy:mysql://localhost:3306/OA?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+        url: jdbc:p6spy:mysql://localhost:3306/oa?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
         username: root
         password: root
     #邮件发送服务
@@ -25,10 +25,10 @@ spring:
         port: 25
         protocol: smtp
         default-encoding: UTF-8
-#    security:
-#      user:
-#          name: admin
-#          password: 123456
+    #    security:
+    #      user:
+    #          name: admin
+    #          password: 123456
     #返回前端的时间格式
     session:
         timeout: 1440m
@@ -37,20 +37,20 @@ spring:
         time-zone: GMT+8
     #mvc在启动时加载，如果不配，则在访问时加载
     mvc:
-      servlet:
-          load-on-startup: 1
+        servlet:
+            load-on-startup: 1
     #redis配置
     redis:
         database: 0
-        host: 127.0.0.1
+        host: www.songjingoa.com
         port: 6379
         timeout: 6000ms
         jedis:
-          pool:
-              max-active: 8
-              max-wait: -1
-              max-idle: 8
-              min-idle: 0
+            pool:
+                max-active: 8
+                max-wait: -1
+                max-idle: 8
+                min-idle: 0
 
 mybatis-plus:
     #mybatisplus包别名

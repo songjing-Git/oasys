@@ -5,7 +5,7 @@ package com.songjing.oasys.security;
  * @version 1.0
  * @date 2021/5/10 16:52
  */
-public enum ResultCode implements CustomizeResultCode{
+public enum ResultCode implements CustomizeResultCode {
     /* 成功 */
     SUCCESS(200, "成功"),
 
@@ -28,7 +28,7 @@ public enum ResultCode implements CustomizeResultCode{
     USER_ACCOUNT_NOT_EXIST(2007, "账号不存在"),
     USER_ACCOUNT_ALREADY_EXIST(2008, "账号已存在"),
     USER_ACCOUNT_USE_BY_OTHERS(2009, "您的登录已经超时或者已经在另一台机器登录，您被迫下线"),
-    USER_SESSION_INVALID(2010,"账户失效"),
+    USER_SESSION_INVALID(2010, "账户失效"),
     /* 业务错误 */
     NO_PERMISSION(4001, "没有权限"),
 
@@ -37,15 +37,15 @@ public enum ResultCode implements CustomizeResultCode{
     DEPARTMENT_ALREADY_EXIST(5008, "部门已存在"),
 
     /*运行时异常*/
-    ARITHMETIC_EXCEPTION(9001,"算数异常"),
-    NULL_POINTER_EXCEPTION(9002,"空指针异常"),
-    ARRAY_INDEX_OUTOfBOUNDS_EXCEPTION(9003,"数组越界");
+    ARITHMETIC_EXCEPTION(9001, "算数异常"),
+    NULL_POINTER_EXCEPTION(9002, "空指针异常"),
+    ARRAY_INDEX_OUTOfBOUNDS_EXCEPTION(9003, "数组越界");
 
     private Integer code;
 
     private String message;
 
-    ResultCode(Integer code,String message){
+    ResultCode(Integer code, String message) {
         this.code = code;
         this.message = message;
     }

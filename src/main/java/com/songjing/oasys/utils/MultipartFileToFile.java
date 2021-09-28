@@ -48,6 +48,7 @@ public class MultipartFileToFile {
 
     /**
      * 删除本地临时文件
+     *
      * @param file
      */
     public static void delteTempFile(File file) {

@@ -31,7 +31,7 @@ public class SalaryController extends ApiController {
 
     @ApiOperation("薪资查询")
     @GetMapping("/querySalaryInfo")
-    public IPage<Salary> querySalaryInfo(@RequestParam Map<String,Object> param){
-       return salaryService.querySalary(param);
+    public IPage<Salary> querySalaryInfo(@RequestParam Map<String, Object> param) {
+        return salaryService.querySalary(param);
     }
 }

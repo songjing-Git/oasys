@@ -26,7 +26,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
     MenuMapper menuMapper;
 
     @Override
-    public List<Menu> getAllMenu(){
+    public List<Menu> getAllMenu() {
         //获取数据库菜单列表
         List<Menu> allMenu = menuMapper.getAllMenu();
         return buildMenuTree(allMenu, "0");
@@ -37,8 +37,8 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         List<Menu> treeList = new ArrayList<>();
         menuList.forEach(menu -> {
             if (StringUtils.equals(pid, menu.getParentMenuId().toString())) {
-                log.info("======menu:"+menu);
-                log.info("==============menuList:"+menuList);
+                log.info("======menu:" + menu);
+                log.info("==============menuList:" + menuList);
                 menu.setChildren(buildMenuTree(menuList, menu.getMenuId().toString()));
                 treeList.add(menu);
             }

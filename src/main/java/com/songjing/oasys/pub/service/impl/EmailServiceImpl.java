@@ -43,9 +43,8 @@ public class EmailServiceImpl implements EmailService {
     private final static String REPLAY_ADDRESS = "1249932920@qq.com";
 
 
-
     @Override
-    public  void sendHtmlMail(MailInfo info, MultipartFile file) {
+    public void sendHtmlMail(MailInfo info, MultipartFile file) {
         info.setHost(HOST);
         info.setFormName(FORM_NAME);
         //网易邮箱的授权码~不一定是密码
@@ -112,7 +111,7 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
-    public  void sendTextMail(MailInfo info) {
+    public void sendTextMail(MailInfo info) {
 
         info.setHost(HOST);
         info.setFormName(FORM_NAME);
@@ -132,7 +131,7 @@ public class EmailServiceImpl implements EmailService {
 
     }
 
-    private    Message getMessage(MailInfo info) throws Exception {
+    private Message getMessage(MailInfo info) throws Exception {
         final Properties p = System.getProperties();
         p.setProperty("mail.smtp.host", info.getHost());
         p.setProperty("mail.smtp.auth", "true");

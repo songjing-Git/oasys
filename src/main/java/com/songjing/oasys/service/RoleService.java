@@ -15,7 +15,6 @@ import java.util.List;
 public interface RoleService extends IService<Role> {
 
     /**
-     *
      * @return
      */
     List<String> selectRoleName();

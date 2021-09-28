@@ -62,7 +62,7 @@ public class ValidateUtils {
             // 取随机字符索引
             int n = ran.nextInt(chars.length);
             // 设置随机颜色
-			/*graphic.setColor(getRandomColor(101, 111, 121));*/
+            /*graphic.setColor(getRandomColor(101, 111, 121));*/
             graphic.setColor(getRandomColor(150, 150, 150));
             // 设置字体大小
             graphic.setFont(new Font(null, Font.BOLD + Font.ITALIC, FONT_SIZE));

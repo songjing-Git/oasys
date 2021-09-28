@@ -19,6 +19,7 @@ public interface DepartMapper extends BaseMapper<Depart> {
 
     /**
      * 通过部门名称查询部门id
+     *
      * @param departName
      * @return
      */
@@ -27,6 +28,7 @@ public interface DepartMapper extends BaseMapper<Depart> {
 
     /**
      * 通过部门id删除部门
+     *
      * @param id
      * @return
      */

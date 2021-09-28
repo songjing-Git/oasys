@@ -29,18 +29,18 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, Project> impl
 
     @Override
     public IPage queryProjectInfo(Map<String, String> param) {
-        IPage page=new Page();
-        if (Maps.isNotEmpty(param,"current")){
+        IPage page = new Page();
+        if (Maps.isNotEmpty(param, "current")) {
             page.setCurrent(Long.parseLong(param.get("current")));
         }
-        if (Maps.isNotEmpty(param,"pageSize")){
+        if (Maps.isNotEmpty(param, "pageSize")) {
             page.setSize(Long.parseLong(param.get("pageSize")));
         }
-        QueryWrapper<Project> projectQueryWrapper=new QueryWrapper<>();
+        QueryWrapper<Project> projectQueryWrapper = new QueryWrapper<>();
         projectQueryWrapper
-                .eq(Maps.isNotEmpty(param,"projectName"),"project_name",param.get("projectName"))
-                .eq(Maps.isNotEmpty(param,"projectId"),"project_id",param.get("projectId"))
-                .eq(Maps.isNotEmpty(param,"projectBoss"),"leading_person",param.get("projectBoss"));
-        return projectMapper.selectPage(page,projectQueryWrapper);
+                .eq(Maps.isNotEmpty(param, "projectName"), "project_name", param.get("projectName"))
+                .eq(Maps.isNotEmpty(param, "projectId"), "project_id", param.get("projectId"))
+                .eq(Maps.isNotEmpty(param, "projectBoss"), "leading_person", param.get("projectBoss"));
+        return projectMapper.selectPage(page, projectQueryWrapper);
     }
 }

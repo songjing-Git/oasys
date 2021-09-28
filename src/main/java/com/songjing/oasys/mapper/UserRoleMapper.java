@@ -21,6 +21,7 @@ public interface UserRoleMapper extends BaseMapper<UserRole> {
 
     /**
      * 通过用户名获取员工角色关系
+     *
      * @param staffId
      * @return
      */
@@ -29,6 +30,7 @@ public interface UserRoleMapper extends BaseMapper<UserRole> {
 
     /**
      * 删除员工所有权限
+     *
      * @param staffId
      * @return
      */

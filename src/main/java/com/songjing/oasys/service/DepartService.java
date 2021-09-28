@@ -18,20 +18,23 @@ public interface DepartService extends IService<Depart> {
 
     /**
      * 查询部门信息
+     *
      * @param param
      * @return
      */
-    IPage selectDepartInfo(Map<String,Object> param);
+    IPage selectDepartInfo(Map<String, Object> param);
 
     /**
      * 获取部门名称列表
+     *
      * @return
      */
-    List<Map<String ,Object>> selectDepartName();
+    List<Map<String, Object>> selectDepartName();
 
 
     /**
      * 添加部门
+     *
      * @param depart
      * @return
      */
@@ -39,6 +42,7 @@ public interface DepartService extends IService<Depart> {
 
     /**
      * 通过id删除部门信息
+     *
      * @param id
      * @return
      */

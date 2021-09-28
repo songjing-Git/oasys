@@ -18,6 +18,7 @@ public interface JobLevelMapper extends BaseMapper<JobLevel> {
 
     /**
      * 通过职位名称查询职位Id
+     *
      * @param jobLevelName
      * @return
      */

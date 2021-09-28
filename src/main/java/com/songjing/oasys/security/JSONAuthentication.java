@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 public abstract class JSONAuthentication {
     /**
      * 输出JSON
+     *
      * @param request
      * @param response
      * @param data
@@ -27,7 +28,7 @@ public abstract class JSONAuthentication {
                              Object data) throws IOException, ServletException {
         //这里很重要，否则页面获取不到正常的JSON数据集
         response.setContentType("application/json;charset=UTF-8");
-        response.setHeader("Access-Control-Allow-Origin", "http://localhost:8081");
+        response.setHeader("Access-Control-Allow-Origin", "http://www.songjingoa.com");
         response.setHeader("Access-Control-Allow-Method", "POST,GET,DELETE,PUT");
         //输出JSON
         PrintWriter out = response.getWriter();

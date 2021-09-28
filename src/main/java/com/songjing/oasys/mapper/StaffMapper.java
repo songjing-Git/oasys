@@ -18,6 +18,7 @@ public interface StaffMapper extends BaseMapper<Staff> {
 
     /**
      * SpringSecurity
+     *
      * @param username
      * @return
      */
@@ -26,6 +27,7 @@ public interface StaffMapper extends BaseMapper<Staff> {
 
     /**
      * 根据id查询名称
+     *
      * @param staffId
      * @return
      */

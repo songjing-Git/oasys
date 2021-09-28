@@ -26,7 +26,7 @@ public class TextController extends ApiController {
 
     @ApiOperation("内推政策")
     @PostMapping("policyPush")
-    public Text policyPush(){
+    public Text policyPush() {
         return textService.policyPush();
     }
 

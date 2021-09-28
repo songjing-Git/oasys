@@ -23,6 +23,6 @@ public class MyAuthenticationSuccessHandler extends JSONAuthentication implement
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
         Result result = Result.ok().message("登录成功");
         System.out.println("登录成功");
-       this.WriteJSON(httpServletRequest,httpServletResponse,result);
+        this.WriteJSON(httpServletRequest, httpServletResponse, result);
     }
 }

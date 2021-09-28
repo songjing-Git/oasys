@@ -34,8 +34,8 @@ public class LeaveDealController extends ApiController {
 
     @ApiOperation("离职处理")
     @PostMapping("/leaveDeal")
-    public int leaveDeal(@RequestBody Map<String ,Object> param){
-        log.info("=========> {param}"+param);
+    public int leaveDeal(@RequestBody Map<String, Object> param) {
+        log.info("=========> {param}" + param);
         LeaveDeal leaveDeal = JSON.parseObject(JSON.toJSONString(param), LeaveDeal.class);
         return leaveDealService.insertLeaveDealInfo(param);
     }

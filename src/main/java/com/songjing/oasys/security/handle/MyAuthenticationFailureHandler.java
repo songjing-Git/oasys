@@ -42,7 +42,7 @@ public class MyAuthenticationFailureHandler extends JSONAuthentication implement
         } else if (e instanceof InternalAuthenticationServiceException) {
             //用户不存在
             result = Result.error(ResultCode.USER_ACCOUNT_NOT_EXIST);
-        }else{
+        } else {
             //其他错误
             result = Result.error(ResultCode.COMMON_FAIL);
         }

@@ -12,7 +12,8 @@ public interface EmailService {
 
 
     /**
-     *发送html格式邮件带附件
+     * 发送html格式邮件带附件
+     *
      * @param info
      * @param file
      */
@@ -20,11 +21,14 @@ public interface EmailService {
 
     /**
      * 发送html格式邮件
+     *
      * @param info
      */
     void sendHtmlMail(MailInfo info);
+
     /**
-  * 发送文本格式邮件
+     * 发送文本格式邮件
+     *
      * @param info
      */
     void sendTextMail(MailInfo info);

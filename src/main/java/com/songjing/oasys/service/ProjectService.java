@@ -17,8 +17,9 @@ public interface ProjectService extends IService<Project> {
 
     /**
      * 根据条件查询项目信息
+     *
      * @param param
      * @return
      */
-    IPage queryProjectInfo(Map<String,String> param);
+    IPage queryProjectInfo(Map<String, String> param);
 }

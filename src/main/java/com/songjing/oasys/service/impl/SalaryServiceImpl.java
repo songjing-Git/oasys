@@ -39,19 +39,19 @@ public class SalaryServiceImpl extends ServiceImpl<SalaryMapper, Salary> impleme
 
     @Override
     public IPage<Salary> querySalary(Map<String, Object> param) {
-        IPage page=new Page<>();
+        IPage page = new Page<>();
         page.setSize(10);
-        if (Maps.isEmpty(param,"current")){
+        if (Maps.isEmpty(param, "current")) {
             page.setCurrent(1);
-        }else {
+        } else {
             page.setCurrent(Long.parseLong(param.get("current").toString()));
         }
-        log.info("===> param:"+param);
+        log.info("===> param:" + param);
         String username = param.get("username").toString();
         QueryWrapper<Staff> queryStaffWrapper = new QueryWrapper<>();
-        queryStaffWrapper.eq(!"".equals(username),"user_name",username);
+        queryStaffWrapper.eq(!"".equals(username), "user_name", username);
         Staff staff = staffMapper.selectOne(queryStaffWrapper);
-        if (staff==null){
+        if (staff == null) {
             throw new RuntimeException("未找到该用户");
         }
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM");
@@ -63,14 +63,14 @@ public class SalaryServiceImpl extends ServiceImpl<SalaryMapper, Salary> impleme
         }
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(salaryDate);
-        calendar.add(Calendar.MONTH,1);
+        calendar.add(Calendar.MONTH, 1);
         Date time = calendar.getTime();
-        log.info("salaryDate:"+salaryDate);
-        log.info("time:"+time);
+        log.info("salaryDate:" + salaryDate);
+        log.info("time:" + time);
         QueryWrapper<Salary> salaryQueryWrapper = new QueryWrapper<>();
-        salaryQueryWrapper.eq("salary_id",staff.getSalaryId())
-        .ge("salary_date",salaryDate)
-        .le("salary_date",time);
-        return salaryMapper.selectMapsPage(page,salaryQueryWrapper);
+        salaryQueryWrapper.eq("salary_id", staff.getSalaryId())
+                .ge("salary_date", salaryDate)
+                .le("salary_date", time);
+        return salaryMapper.selectMapsPage(page, salaryQueryWrapper);
     }
 }

@@ -23,6 +23,6 @@ public class MyAccessDeniedHandler extends JSONAuthentication implements AccessD
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {
         Result result = Result.error(ResultCode.NO_PERMISSION);
-        this.WriteJSON(request,response,result);
+        this.WriteJSON(request, response, result);
     }
 }

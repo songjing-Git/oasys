@@ -17,7 +17,8 @@ public interface PerformanceService extends IService<Performance> {
 
     /**
      * 绩效排行
+     *
      * @return
      */
-    List<Map<String,Object>> selectPerformanceList();
+    List<Map<String, Object>> selectPerformanceList();
 }

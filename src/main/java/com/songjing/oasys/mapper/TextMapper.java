@@ -19,12 +19,11 @@ import org.springframework.stereotype.Repository;
 public interface TextMapper extends BaseMapper<Text> {
 
     /**
-     *
      * @param textType
      * @param date
      * @return
      */
     @Select("select * from text where text_type=#{textType} and text_valid_date<=#{date} and text_expire_date>=#{date}")
-    Text policyPush(@Param("textType") String textType,@Param("date") String date);
+    Text policyPush(@Param("textType") String textType, @Param("date") String date);
 
 }

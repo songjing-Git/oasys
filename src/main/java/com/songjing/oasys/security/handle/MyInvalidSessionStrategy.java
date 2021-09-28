@@ -21,6 +21,6 @@ public class MyInvalidSessionStrategy extends JSONAuthentication implements Inva
     @Override
     public void onInvalidSessionDetected(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Result result = Result.error(ResultCode.USER_SESSION_INVALID);
-        this.WriteJSON(request,response,result);
+        this.WriteJSON(request, response, result);
     }
 }

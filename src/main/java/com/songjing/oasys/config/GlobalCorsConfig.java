@@ -19,7 +19,10 @@ public class GlobalCorsConfig {
     public CorsFilter corsFilter() {
         log.info("添加CORS配置信息");
         CorsConfiguration config = new CorsConfiguration();
+        config.addAllowedOrigin("http://www.songjingoa.com");
+        /*config.addAllowedOrigin("http://www.songjingoa.com:8081");
         config.addAllowedOrigin("http://localhost:8081");
+        config.addAllowedOrigin("http://111.229.221.151:8081");*/
         //config.addAllowedOrigin("http://localhost:8081");
         //2) 是否发送Cookie信息
         config.setAllowCredentials(true);

@@ -23,6 +23,6 @@ public class MyAuthenticationEntryPoint extends JSONAuthentication implements Au
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {
         Result result = Result.error(ResultCode.USER_NOT_LOGIN);
 
-        this.WriteJSON(request,response,result);
+        this.WriteJSON(request, response, result);
     }
 }

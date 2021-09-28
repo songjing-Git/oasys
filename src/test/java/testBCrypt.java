@@ -18,7 +18,7 @@ public class testBCrypt {
     private PasswordEncoder passwordEncoder;
 
     @Test
-    void testBCrypt(){
+    void testBCrypt() {
         System.out.println(passwordEncoder.encode("jw"));
     }
 }

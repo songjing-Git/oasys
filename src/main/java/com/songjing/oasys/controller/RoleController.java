@@ -28,7 +28,7 @@ public class RoleController extends ApiController {
 
     @ApiOperation("查询所有角色名称")
     @GetMapping("/selectRoleName")
-    public List<String> selectRoleName(){
+    public List<String> selectRoleName() {
         return roleService.selectRoleName();
     }
 }

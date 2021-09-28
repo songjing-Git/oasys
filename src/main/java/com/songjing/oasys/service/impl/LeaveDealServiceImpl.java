@@ -33,14 +33,14 @@ public class LeaveDealServiceImpl extends ServiceImpl<LeaveDealMapper, LeaveDeal
 
     @Override
     public int insertLeaveDealInfo(Map<String, Object> param) {
-        log.info("=========> {param}"+param);
-        if (!"".equals(param.get("leaveStaffId").toString())){
+        log.info("=========> {param}" + param);
+        if (!"".equals(param.get("leaveStaffId").toString())) {
             QueryWrapper<Staff> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq("staff_id",Integer.parseInt(param.get("leaveStaffId").toString()));
+            queryWrapper.eq("staff_id", Integer.parseInt(param.get("leaveStaffId").toString()));
             Staff staff = new Staff();
             staff.setWorkState(0);
             int update = staffMapper.update(staff, queryWrapper);
-            log.info("===> update:"+update);
+            log.info("===> update:" + update);
         }
         LeaveDeal leaveDeal = JSON.parseObject(JSON.toJSONString(param), LeaveDeal.class);
 

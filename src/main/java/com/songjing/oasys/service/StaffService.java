@@ -13,48 +13,54 @@ import java.util.Map;
  * @author songjing
  * @since 2021-03-16 15:15:48
  */
-public interface StaffService extends IService<Staff>   {
+public interface StaffService extends IService<Staff> {
 
     /**
      * 根据条件查询员工信息
+     *
      * @param param
      * @return
      */
-    IPage queryStaffInfo(Map<String,Object> param);
+    IPage queryStaffInfo(Map<String, Object> param);
 
     /**
      * 根据员工名称查询员工信息
+     *
      * @param username
      * @return
      */
-    Map<String,Object> selectStaffInfoByName(String username);
+    Map<String, Object> selectStaffInfoByName(String username);
 
     /**
      * 新增员工接口
+     *
      * @param param
      * @return
      */
-    int insertStaff(Map<String ,Object> param);
+    int insertStaff(Map<String, Object> param);
 
     /**
      * 更新员工信息
+     *
      * @param param
      * @return
      */
-    int updateStaff(Map<String,Object> param);
+    int updateStaff(Map<String, Object> param);
 
 
     /**
      * 查询没有部门的员工
+     *
      * @param current
      * @param pageSize
      * @return
      */
-    IPage selectNoDeptStaff(int current,int pageSize);
+    IPage selectNoDeptStaff(int current, int pageSize);
 
 
     /**
      * 更新员工基本信息
+     *
      * @param staff
      * @return
      */

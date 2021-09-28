@@ -29,14 +29,14 @@ import javax.sql.DataSource;
 
 @Configuration
 @Slf4j
-@EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -69,19 +69,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private DataSource dataSource;
 
     @Bean
-      public PersistentTokenRepository persistentTokenRepository(){
-                JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
-                 tokenRepository.setDataSource(dataSource);
+    public PersistentTokenRepository persistentTokenRepository() {
+        JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
+        tokenRepository.setDataSource(dataSource);
         //系统在启动的时候生成“记住我”的数据表（只能使用一次）
-                 tokenRepository.setCreateTableOnStartup(false);
-                 return tokenRepository;
-             }
+        tokenRepository.setCreateTableOnStartup(false);
+        return tokenRepository;
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         log.info("AuthenticationManagerBuilder 配置");
         auth.userDetailsService(userDetailsService)
-        .passwordEncoder(passwordEncoder());
+                .passwordEncoder(passwordEncoder());
     }
 
     @Override
@@ -97,7 +97,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors();
         log.info("HttpSecurity 配置...");
         http.authorizeRequests()
-                .antMatchers("/getCodeImg/**","/performance/performanceList","/pushSend").permitAll()
+                .antMatchers("/getCodeImg/**", "/performance/performanceList", "/pushSend").permitAll()
                 .antMatchers(
                         HttpMethod.GET,
                         "/*.html",
@@ -139,7 +139,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .maxSessionsPreventsLogin(false)
                 //.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
                 .expiredSessionStrategy(myExpiredSessionStrategy);
-
 
 
     }

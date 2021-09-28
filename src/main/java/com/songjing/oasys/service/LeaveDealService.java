@@ -16,8 +16,9 @@ public interface LeaveDealService extends IService<LeaveDeal> {
 
     /**
      * 插入离职信息
+     *
      * @param param
      * @return
      */
-    int insertLeaveDealInfo(Map<String,Object> param);
+    int insertLeaveDealInfo(Map<String, Object> param);
 }

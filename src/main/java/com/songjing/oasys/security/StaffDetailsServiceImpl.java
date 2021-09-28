@@ -40,24 +40,26 @@ public class StaffDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        log.info("============userName:"+userName);
-        if (userName==null||userName.length()==0){
-            throw new  RuntimeException("用户名不能为空");
+        log.info("============userName:" + userName);
+        if (userName == null || userName.length() == 0) {
+            throw new RuntimeException("用户名不能为空");
         }
         Staff staff = staffMapper.loadUserByUsername(userName);
-        if (staff==null) {
+        if (staff == null) {
             throw new InternalAuthenticationServiceException("根据用户名未找到用户信息");
         }
         List<UserRole> roleByStaffId = userRoleMapper.getRoleByUserName(staff.getStaffId());
-        List<Role> roles=new ArrayList<>();
-        for (UserRole uRole:roleByStaffId) {
+        log.info("=============:roleByStaffId" + roleByStaffId);
+        List<Role> roles = new ArrayList<>();
+        for (UserRole uRole : roleByStaffId) {
             Role roleById = roleMapper.getRoleById(uRole.getRoleId());
+            log.info("===================roleById:" + roleById);
             roles.add(roleById);
 
         }
         staff.setRoles(roles);
-        log.info("==========>  staff:"+staff);
-        log.info("==========>  staff:"+staff.getAuthorities());
+        log.info("==========>  staff:" + staff);
+        log.info("==========>  staff:" + staff.getAuthorities());
         /*List<GrantedAuthority> authorities=new ArrayList<>();
         //获取员工的角色权限信息
         List<UserRole> roleByStaffId = userRoleMapper.getRoleByUserName(staff.getStaffId());

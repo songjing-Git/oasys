@@ -16,6 +16,7 @@ public interface MenuService extends IService<Menu> {
 
     /**
      * getAllMenu
+     *
      * @return
      */
     List<Menu> getAllMenu();

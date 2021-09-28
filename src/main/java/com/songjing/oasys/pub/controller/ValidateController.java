@@ -40,7 +40,7 @@ public class ValidateController {
             String code = objs[0].toString();
             String verid = UUID.randomUUID().toString().replaceAll("-", "");
             //将uuid串存入cookie
-            Cookie cookie=new Cookie(VERIFY_ID, verid);
+            Cookie cookie = new Cookie(VERIFY_ID, verid);
             response.addCookie(cookie);
             //将验证码存入redis
             redisTemplate.opsForValue().set(verid, code, 3600);
@@ -54,8 +54,7 @@ public class ValidateController {
             OutputStream os = response.getOutputStream();
             //输出验证码图片文件流
             ImageIO.write(image, "png", os);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }

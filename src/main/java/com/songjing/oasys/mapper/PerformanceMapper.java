@@ -21,9 +21,10 @@ public interface PerformanceMapper extends BaseMapper<Performance> {
 
     /**
      * 绩效排行查询
+     *
      * @return
      */
     @Select("select * from performance where 1=1 order by Performance_score desc limit 10")
-    List<Map<String,Object>> selectPerformanceList();
+    List<Map<String, Object>> selectPerformanceList();
 
 }

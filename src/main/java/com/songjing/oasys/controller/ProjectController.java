@@ -31,26 +31,26 @@ public class ProjectController extends ApiController {
 
     @ApiOperation("项目信息查询")
     @GetMapping("/queryProjectInfo")
-    public IPage queryProjectInfo(@RequestParam(required = false) Map<String,String> param) {
-        log.info("param:"+param);
+    public IPage queryProjectInfo(@RequestParam(required = false) Map<String, String> param) {
+        log.info("param:" + param);
         return projectService.queryProjectInfo(param);
     }
 
 
     @ApiOperation("新增项目")
     @PostMapping("/insertProject")
-    public boolean insertProject(@RequestBody Project project){
-        log.info("========> project:"+project);
+    public boolean insertProject(@RequestBody Project project) {
+        log.info("========> project:" + project);
         project.setProjectstate("1");
         return projectService.save(project);
     }
 
     @ApiOperation("修改项目")
     @PutMapping("/updateProject")
-    public boolean updateProject(@RequestBody Project project){
-        log.info("========> project:"+project);
+    public boolean updateProject(@RequestBody Project project) {
+        log.info("========> project:" + project);
         QueryWrapper<Project> projectQueryWrapper = new QueryWrapper<Project>();
-        projectQueryWrapper.eq("project_id",project.getProjectId());
-        return projectService.update(project,projectQueryWrapper);
+        projectQueryWrapper.eq("project_id", project.getProjectId());
+        return projectService.update(project, projectQueryWrapper);
     }
 }

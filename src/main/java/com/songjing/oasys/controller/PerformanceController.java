@@ -29,7 +29,7 @@ public class PerformanceController extends ApiController {
 
     @ApiOperation("绩效排行")
     @GetMapping("/performanceList")
-    public List<Map<String,Object>> queryPerformanceList(){
+    public List<Map<String, Object>> queryPerformanceList() {
         return performanceService.selectPerformanceList();
     }
 

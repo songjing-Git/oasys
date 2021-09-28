@@ -38,31 +38,32 @@ public class DepartServiceImpl extends ServiceImpl<DepartMapper, Depart> impleme
     StaffMapper staffMapper;
 
     @Override
-    public IPage selectDepartInfo(Map<String,Object> param) {
-        log.info("==============param:"+param);
-        IPage page=new Page<>();
-        if (param.containsKey("current")){
+    public IPage selectDepartInfo(Map<String, Object> param) {
+        log.info("==============param:" + param);
+        IPage page = new Page<>();
+        if (param.containsKey("current")) {
             page.setCurrent(Long.parseLong(param.get("current").toString()));
         }
-        if (param.containsKey("pageSize")){
+        if (param.containsKey("pageSize")) {
             page.setSize(Long.parseLong(param.get("pageSize").toString()));
         }
-        QueryWrapper<Depart> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq(Maps.isNotEmpty(param,"departId"),"depart_id",param.get("departId"))
-                .eq(Maps.isNotEmpty(param,"departName"),"depart_name",param.get("departName"))
-                .eq(Maps.isNotEmpty(param,"departMgr"),"depart_mgr","departMgr");
+        QueryWrapper<Depart> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq(Maps.isNotEmpty(param, "departId"), "depart_id", param.get("departId"))
+                .eq(Maps.isNotEmpty(param, "departName"), "depart_name", param.get("departName"))
+                .eq(Maps.isNotEmpty(param, "departMgr"), "depart_mgr", "departMgr");
 
         return departMapper.selectPage(page, queryWrapper);
     }
 
     @Override
-    public List<Map<String ,Object>> selectDepartName() {
+    public List<Map<String, Object>> selectDepartName() {
         List<Depart> departs = departMapper.selectList(null);
-        List<Map<String ,Object>> departNameList = new ArrayList<>();
-        if (!departs.isEmpty()){
-            for (Depart depart: departs) {
+        List<Map<String, Object>> departNameList = new ArrayList<>();
+        if (!departs.isEmpty()) {
+            for (Depart depart : departs) {
                 Map<String, Object> departMap = JSON.parseObject(JSON.toJSONString(depart),
-                        new TypeReference<Map<String, Object>>() {});
+                        new TypeReference<Map<String, Object>>() {
+                        });
                 departNameList.add(departMap);
             }
         }
@@ -73,32 +74,32 @@ public class DepartServiceImpl extends ServiceImpl<DepartMapper, Depart> impleme
 
     @Override
     public int insertDepart(Depart depart) {
-        log.info("===============depart:"+depart);
+        log.info("===============depart:" + depart);
         return departMapper.insert(depart);
     }
 
-    @Transactional(rollbackFor=Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public int removeById(int id) {
         QueryWrapper<Staff> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("depart_id",id);
+        queryWrapper.eq("depart_id", id);
         List<Map<String, Object>> maps = staffMapper.selectMaps(queryWrapper);
 
-        if (!maps.isEmpty()){
-            List<Integer> intList=new ArrayList<>();
+        if (!maps.isEmpty()) {
+            List<Integer> intList = new ArrayList<>();
             for (Map<String, Object> map : maps) {
-                int departId =Integer.parseInt(map.get("staff_id").toString()) ;
+                int departId = Integer.parseInt(map.get("staff_id").toString());
                 intList.add(departId);
             }
             Staff staff = new Staff();
             staff.setDepartId(null);
             QueryWrapper<Staff> queryWrapper1 = new QueryWrapper<>();
-            queryWrapper1.in("staff_id",intList);
+            queryWrapper1.in("staff_id", intList);
             int update = staffMapper.update(staff, queryWrapper1);
-            log.info("======update:"+update);
+            log.info("======update:" + update);
         }
         int i = departMapper.deleteById(id);
-        log.info("==========> i:"+i);
+        log.info("==========> i:" + i);
         return i;
     }
 }

@@ -14,6 +14,7 @@ public interface TextService extends IService<Text> {
 
     /**
      * 获取有效的内推政策
+     *
      * @return
      */
     Text policyPush();
